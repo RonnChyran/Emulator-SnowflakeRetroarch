@@ -1,0 +1,13 @@
+﻿{
+    "name": "SnowflakeRA-bSNES-compatibility",
+    "type": "plugin_emulator",
+    "version": "1.0.0.0",
+    "authors": [
+        "Ronny Chan"
+    ],
+    "description": "libRetro-bSNES Compatilibility Bridge",
+    "platforms": [
+        "NINTENDO_SNES"
+    ],
+    "emulator_assembly":  "retroarch"
+}

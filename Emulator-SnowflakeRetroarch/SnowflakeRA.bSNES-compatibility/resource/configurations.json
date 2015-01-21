@@ -1,0 +1,277 @@
+﻿[
+    {
+        "template": "libretro_path = \"{libretro_path}\"\nlibretro_info_path = \"{libretro_info_path}\"\nsystem_directory = \"{system_directory}\"\nrgui_config_directory = \"{rgui_config_directory}\"\nconfig_save_on_exit = \"{config_save_on_exit}\"\nvideo_shader_dir = \"{video_shader_dir}\"\njoypad_autoconfig_dir = \"{joypad_autoconfig_dir}\"\nscreenshot_directory = \"{screenshot_directory}\"\nfps_show = \"{fps_show}\"\nrewind_enable = \"{rewind_enable}\"\nrewind_granularity = \"{rewind_granularity}\"\nvideo_shader_enable = \"{video_shader_enable}\"\nvideo_aspect_ratio = \"{video_aspect_ratio}\"\nvideo_xscale = \"{video_xscale}\"\nautosave_interval = \"{autosave_interval}\"\nvideo_yscale = \"{video_yscale}\"\nvideo_crop_overscan = \"{video_crop_overscan}\"\nvideo_scale_integer = \"{video_scale_integer}\"\nvideo_smooth = \"{video_smooth}\"\nvideo_threaded = \"{video_threaded}\"\nvideo_fullscreen = \"{video_fullscreen}\"\nvideo_refresh_rate = \"{video_refresh_rate}\"\nvideo_driver = \"{video_driver}\"\nvideo_vsync = \"{video_vsync}\"\nvideo_hard_sync = \"{video_hard_sync}\"\nvideo_hard_sync_frames = \"{video_hard_sync_frames}\"\nvideo_black_frame_insertion = \"{video_black_frame_insertion}\"\nvideo_swap_interval = \"{video_swap_interval}\"\nvideo_gpu_screenshot = \"{video_gpu_screenshot}\"\nvideo_rotation = \"{video_rotation}\"\naspect_ratio_index = \"{aspect_ratio_index}\"\naudio_rate_control = \"{audio_rate_control}\"\naudio_rate_control_delta = \"{audio_rate_control_delta}\"\naudio_driver = \"{audio_driver}\"\naudio_out_rate = \"{audio_out_rate}\"\naudio_resampler = \"{audio_resampler}\"\nsavefile_directory = \"{savefile_directory}\"\nsavestate_directory = \"{savestate_directory}\"\ncontent_directory = \"{content_directory}\"\nrgui_browser_directory = \"{rgui_browser_directory}\"\nrgui_show_start_screen = \"{rgui_show_start_screen}\"\ngame_history_size = \"{game_history_size}\"\ninput_autodetect_enable = \"{input_autodetect_enable}\"\noverlay_directory = \"{overlay_directory}\"\ninput_overlay_opacity = \"{input_overlay_opacity}\"\ninput_overlay_scale = \"{input_overlay_scale}\"\ngamma_correction = \"{gamma_correction}\"\ntriple_buffering_enable = \"{triple_buffering_enable}\"\nsoft_filter_enable = \"{soft_filter_enable}\"\nflicker_filter_enable = \"{flicker_filter_enable}\"\nflicker_filter_index = \"{flicker_filter_index}\"\nsoft_filter_index = \"{soft_filter_index}\"\ncurrent_resolution_id = \"{current_resolution_id}\"\ncustom_viewport_width = \"{custom_viewport_width}\"\ncustom_viewport_height = \"{custom_viewport_height}\"\ncustom_viewport_x = \"{custom_viewport_x}\"\ncustom_viewport_y = \"{custom_viewport_y}\"\nvideo_font_size = \"{video_font_size}\"\nblock_sram_overwrite = \"{block_sram_overwrite}\"\nsavestate_auto_index = \"{savestate_auto_index}\"\nsavestate_auto_save = \"{savestate_auto_save}\"\nsavestate_auto_load = \"{savestate_auto_load}\"\nsound_mode = \"{sound_mode}\"\nstate_slot = \"{state_slot}\"\ncustom_bgm_enable = \"{custom_bgm_enable}\"\ninput_driver = \"{input_driver}\"\nvideo_shader = \"{video_shader}\"\n",
+        "boolean": {
+            "true": "true",
+            "false": "false"
+        },
+        "filename": "retroarch.cfg",
+        "configuration_name": "RetroArchCore",
+        "keys": {
+            "libretro_path": {
+                "description": "Path to libRetroCore",
+                "defaultValue": ":\\cores/"
+            },
+            "libretro_info_path": {
+                "description": "desc",
+                "defaultValue": ":\\info/"
+            },
+            "system_directory": {
+                "description": "desc",
+                "defaultValue": ":\\system/"
+            },
+            "rgui_config_directory": {
+                "description": "desc",
+                "defaultValue": ":\\configs/"
+            },
+            "config_save_on_exit": {
+                "description": "Save configuration on exit (Unavailable if Snowflake configuration handling is enabled)",
+                "defaultValue": true
+            },
+            "video_shader_dir": {
+                "description": "desc",
+                "defaultValue": ":\\shaders/"
+            },
+            "joypad_autoconfig_dir": {
+                "description": "desc",
+                "defaultValue": ":\\autoconfig/"
+            },
+            "screenshot_directory": {
+                "description": "desc",
+                "defaultValue": ":\\screenshots/"
+            },
+            "fps_show": {
+                "description": "Show FPS counter",
+                "defaultValue": false
+            },
+            "rewind_enable": {
+                "description": "Enable Rewind",
+                "defaultValue": false
+            },
+            "rewind_granularity": {
+                "description": "How many frames to rewind at a time (Increases rewind speed)",
+                "defaultValue": 1
+            },
+            "video_shader_enable": {
+                "description": "Enable Video Shaders",
+                "defaultValue": false
+            },
+            "video_aspect_ratio": {
+                "description": "Aspect Ratio (-1 is Core Provided)",
+                "defaultValue": -1
+            },
+            "video_xscale": {
+                "description": "Windowed xscale",
+                "defaultValue": 3
+            },
+            "autosave_interval": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "video_yscale": {
+                "description": "Windowed yscale",
+                "defaultValue": 3
+            },
+            "video_crop_overscan": {
+                "description": "Force crop overscan",
+                "defaultValue": true
+            },
+            "video_scale_integer": {
+                "description": "Use ",
+                "defaultValue": false
+            },
+            "video_smooth": {
+                "description": "Use Bilinear Filtering",
+                "defaultValue": false
+            },
+            "video_threaded": {
+                "description": "Use Threaded Video Driver",
+                "defaultValue": false
+            },
+            "video_fullscreen": {
+                "description": "Start in fullscreen. Can be changed at runtime.",
+                "defaultValue": false
+            },
+            "video_refresh_rate": {
+                "description": "desc",
+                "defaultValue": 59.950001
+            },
+            "video_driver": {
+                "description": "Video driver to use",
+                "defaultValue": "gl"
+            },
+            "video_vsync": {
+                "description": "VSync",
+                "defaultValue": true
+            },
+            "video_hard_sync": {
+                "description": "Hard GPU Sync",
+                "defaultValue": false
+            },
+            "video_hard_sync_frames": {
+                "description": "Number of synced GPU Frames",
+                "defaultValue": 0
+            },
+            "video_black_frame_insertion": {
+                "description": "Black Frame Insertion",
+                "defaultValue": false
+            },
+            "video_swap_interval": {
+                "description": "VSync swap interval",
+                "defaultValue": 1
+            },
+            "video_gpu_screenshot": {
+                "description": "Screenshots will be taken after applying shaders",
+                "defaultValue": true
+            },
+            "video_rotation": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "aspect_ratio_index": {
+                "description": "desc",
+                "defaultValue": 4
+            },
+            "audio_rate_control": {
+                "description": "Enable experimental audio rate control",
+                "defaultValue": true
+            },
+            "audio_rate_control_delta": {
+                "description": "Audio Rate Control Delta",
+                "defaultValue": 0.005
+            },
+            "audio_driver": {
+                "description": "desc",
+                "defaultValue": "dsound"
+            },
+            "audio_out_rate": {
+                "description": "desc",
+                "defaultValue": 48000
+            },
+            "audio_resampler": {
+                "description": "desc",
+                "defaultValue": "sinc"
+            },
+            "savefile_directory": {
+                "description": "desc",
+                "defaultValue": "defaultValue"
+            },
+            "savestate_directory": {
+                "description": "desc",
+                "defaultValue": "defaultValue"
+            },
+            "content_directory": {
+                "description": "desc",
+                "defaultValue": "defaultValue"
+            },
+            "rgui_browser_directory": {
+                "description": "desc",
+                "defaultValue": "defaultValue"
+            },
+            "rgui_show_start_screen": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "game_history_size": {
+                "description": "desc",
+                "defaultValue": 100
+            },
+            "input_autodetect_enable": {
+                "description": "desc",
+                "defaultValue": true
+            },
+            "overlay_directory": {
+                "description": "desc",
+                "defaultValue": "defaultValue"
+            },
+            "input_overlay_opacity": {
+                "description": "desc",
+                "defaultValue": 0.7
+            },
+            "input_overlay_scale": {
+                "description": "desc",
+                "defaultValue": 1
+            },
+            "gamma_correction": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "triple_buffering_enable": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "soft_filter_enable": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "flicker_filter_enable": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "flicker_filter_index": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "soft_filter_index": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "current_resolution_id": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "custom_viewport_width": {
+                "description": "desc",
+                "defaultValue": 960
+            },
+            "custom_viewport_height": {
+                "description": "desc",
+                "defaultValue": 720
+            },
+            "custom_viewport_x": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "custom_viewport_y": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "video_font_size": {
+                "description": "desc",
+                "defaultValue": 48
+            },
+            "block_sram_overwrite": {
+                "description": "Block SRAM from being overwritten when loading save states.",
+                "defaultValue": false
+            },
+            "savestate_auto_index": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "savestate_auto_save": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "savestate_auto_load": {
+                "description": "desc",
+                "defaultValue": true
+            },
+            "sound_mode": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "state_slot": {
+                "description": "desc",
+                "defaultValue": 0
+            },
+            "custom_bgm_enable": {
+                "description": "desc",
+                "defaultValue": false
+            },
+            "input_driver": {
+                "description": "desc",
+                "defaultValue": "dinput"
+            }
+        }
+    }
+]
