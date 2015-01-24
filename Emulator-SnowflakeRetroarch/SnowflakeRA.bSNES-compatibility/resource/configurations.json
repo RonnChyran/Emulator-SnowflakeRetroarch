@@ -6,7 +6,7 @@
             "false": "false"
         },
         "filename": "retroarch.cfg",
-        "configuration_name": "RetroArchCore",
+        "templateid": "RetroArchCore",
         "keys": {
             "libretro_path": {
                 "description": "Path to libRetroCore",

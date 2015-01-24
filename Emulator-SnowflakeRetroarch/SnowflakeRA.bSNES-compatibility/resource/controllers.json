@@ -11,6 +11,8 @@
                 "input": {
                     "BTN_A": "RETROARCH_GAMEPAD_INPUT_A",
                     "BTN_B": "RETROARCH_GAMEPAD_INPUT_B",
+                    "BTN_X": "RETROARCH_GAMEPAD_INPUT_X",
+                    "BTN_Y": "RETROARCH_GAMEPAD_INPUT_Y",
                     "BTN_DPAD_UP": "RETROARCH_GAMEPAD_INPUT_UP",
                     "BTN_DPAD_DOWN": "RETROARCH_GAMEPAD_INPUT_DOWN",
                     "BTN_DPAD_LEFT": "RETROARCH_GAMEPAD_INPUT_LEFT",
@@ -30,6 +32,8 @@
                 "input": {
                     "BTN_A": "RETROARCH_KEYBOARD_INPUT_A",
                     "BTN_B": "RETROARCH_KEYBOARD_INPUT_B",
+                    "BTN_X": "RETROARCH_KEYBOARD_INPUT_X",
+                    "BTN_Y": "RETROARCH_KEYBOARD_INPUT_Y",
                     "BTN_DPAD_UP": "RETROARCH_KEYBOARD_INPUT_UP",
                     "BTN_DPAD_DOWN": "RETROARCH_KEYBOARD_INPUT_DOWN",
                     "BTN_DPAD_LEFT": "RETROARCH_KEYBOARD_INPUT_LEFT",
