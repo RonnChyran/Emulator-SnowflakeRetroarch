@@ -1,0 +1,8 @@
+﻿[
+    {
+        "key": "fullscreen_toggle",
+        "type": "BOOLEAN_FLAG",
+        "description": "Toggles Fullscreen",
+        "default": "true"
+    }
+]

@@ -8,11 +8,14 @@ using System.Reflection;
 using Snowflake.Emulator;
 using Snowflake.Emulator.Configuration;
 using Snowflake.Emulator.Input;
+using Snowflake.Emulator.Input.InputManager;
+using Snowflake.Controller;
 using Snowflake.Game;
 using Snowflake.Platform;
 using Snowflake.Service;
 using System.IO;
 using System.Diagnostics;
+using Snowflake.InputManager;
 
 namespace SnowflakeRA.bSNEScompatibility
 {
@@ -31,9 +34,13 @@ namespace SnowflakeRA.bSNEScompatibility
         {
             var emulatorPath =
                 Path.Combine(this.CoreInstance.EmulatorManager.GetAssemblyDirectory(this.EmulatorAssembly), this.EmulatorAssembly.MainAssembly);
-            var retroArchCfg = this.CompileConfiguration(this.ConfigurationTemplates[retroArchConfigTemplate], this.ConfigurationTemplates[retroArchConfigTemplate].ConfigurationStore.GetConfigurationProfile(game));
+            
+            var configProfile = this.ConfigurationTemplates[retroArchConfigTemplate].ConfigurationStore.GetConfigurationProfile(game);
+            configProfile.ConfigurationValues["input_autodetect_enable"] = false; //Force no autodetect
+            var retroArchCfg = this.CompileConfiguration(this.ConfigurationTemplates[retroArchConfigTemplate], configProfile);
             var controller1 = this.CompileController(1, this.CoreInstance.LoadedPlatforms[StonePlatforms.NINTENDO_SNES], this.InputTemplates[retroArchInputTemplateTemplate]);
             var controller2 = this.CompileController(2, this.CoreInstance.LoadedPlatforms[StonePlatforms.NINTENDO_SNES], this.InputTemplates[retroArchInputTemplateTemplate]);
+            
 
             File.WriteAllText(Path.Combine(this.PluginDataPath, "retroarch.tmp.cfg"), retroArchCfg);
             File.AppendAllText(Path.Combine(this.PluginDataPath, "retroarch.tmp.cfg"), Environment.NewLine + controller1);
@@ -46,6 +53,31 @@ namespace SnowflakeRA.bSNEScompatibility
             Console.WriteLine(startInfo.Arguments);
             
             Process.Start(startInfo);
+        }
+
+        
+        public override string CompileController(int playerIndex, IPlatformInfo platformInfo, IControllerDefinition controllerDefinition, IControllerTemplate controllerTemplate, IControllerProfile controllerProfile, IInputTemplate inputTemplate){
+             var controllerMappings = controllerProfile.ProfileType == ControllerProfileType.KEYBOARD_PROFILE ?
+                controllerTemplate.KeyboardControllerMappings : controllerTemplate.GamepadControllerMappings;
+            string deviceName = this.CoreInstance.ControllerPortsDatabase.GetDeviceInPort(platformInfo, playerIndex);
+            IList<IInputDevice> devices = new InputManager().GetGamepads();
+            if(deviceName == InputDeviceNames.XInputDevice1){
+                controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 1).First().DeviceIndex.ToString();
+            }
+            if (deviceName == InputDeviceNames.XInputDevice2)
+            {
+                controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 2).First().DeviceIndex.ToString();
+            }
+            if (deviceName == InputDeviceNames.XInputDevice3)
+            {
+                controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 3).First().DeviceIndex.ToString();
+            }
+            if (deviceName == InputDeviceNames.XInputDevice4)
+            {
+                controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 4).First().DeviceIndex.ToString();
+            }
+
+            return base.CompileController(playerIndex, platformInfo, controllerDefinition, controllerTemplate, controllerProfile, inputTemplate, controllerMappings);
         }
         public override void ShutdownEmulator()
         {

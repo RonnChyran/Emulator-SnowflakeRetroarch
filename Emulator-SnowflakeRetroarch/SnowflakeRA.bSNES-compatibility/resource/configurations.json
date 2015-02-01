@@ -178,7 +178,7 @@
             },
             "input_autodetect_enable": {
                 "description": "desc",
-                "defaultValue": true
+                "defaultValue": false
             },
             "overlay_directory": {
                 "description": "desc",

@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnowflakeRA.bSNEScompatibility", "SnowflakeRA.bSNES-compatibility\SnowflakeRA.bSNEScompatibility.csproj", "{DD618C33-FAA3-4811-8382-CD64D6E0E24F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowflake.API", "..\..\snowflake-csharp\Snowflake.API\Snowflake.API.csproj", "{2841AEEA-03D5-47B0-9D90-375DFA19559A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowflake", "..\..\snowflake-csharp\Snowflake\Snowflake.csproj", "{8F1D65ED-4A96-4A0A-8371-53655A60A2B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CDBF90BC-DAA1-478F-BC01-D1DE4CFD9601}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CDBF90
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowflake.API", "..\..\..\snowflake-working\Snowflake.API\Snowflake.API.csproj", "{2841AEEA-03D5-47B0-9D90-375DFA19559A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snowflake", "..\..\..\snowflake-working\Snowflake\Snowflake.csproj", "{8F1D65ED-4A96-4A0A-8371-53655A60A2B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

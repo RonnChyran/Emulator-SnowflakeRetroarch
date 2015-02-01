@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Snowflake.InputManager">
+      <HintPath>..\..\..\..\snowflake-csharp\Snowflake.InputManager.DirectInput\bin\Debug\Snowflake.InputManager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -44,22 +47,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\snowflake-csharp\Snowflake.API\Snowflake.API.csproj">
-      <Project>{2841aeea-03d5-47b0-9d90-375dfa19559a}</Project>
-      <Name>Snowflake.API</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\snowflake-csharp\Snowflake\Snowflake.csproj">
-      <Project>{8f1d65ed-4a96-4a0a-8371-53655a60a2b3}</Project>
-      <Name>Snowflake</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="resource\configurations.json" />
     <EmbeddedResource Include="resource\controllers.json" />
     <EmbeddedResource Include="resource\input.json" />
     <EmbeddedResource Include="resource\plugin.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\snowflake-working\Snowflake.API\Snowflake.API.csproj">
+      <Project>{2841aeea-03d5-47b0-9d90-375dfa19559a}</Project>
+      <Name>Snowflake.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\snowflake-working\Snowflake\Snowflake.csproj">
+      <Project>{8f1d65ed-4a96-4a0a-8371-53655a60a2b3}</Project>
+      <Name>Snowflake</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\flags.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
