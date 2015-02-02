@@ -6,7 +6,7 @@
         "gamepad": {
             "default": {
                 "keys": {
-                    "INPUTDEVICE": "1"
+                    "INPUTDEVICE": "5"
                 },
                 "input": {
                     "BTN_A": "RETROARCH_GAMEPAD_INPUT_A",

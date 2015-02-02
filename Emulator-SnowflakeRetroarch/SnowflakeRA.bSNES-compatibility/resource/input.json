@@ -104,10 +104,10 @@
                 "GAMEPAD_R_Y_RIGHT": "-2",
                 "GAMEPAD_R_Y_LEFT": "+2",
                 "GAMEPAD_GUIDE": "10",
-                "GAMEPAD_DPAD_UP": "hat0up",
-                "GAMEPAD_DPAD_DOWN": "hat0down",
-                "GAMEPAD_DPAD_LEFT": "hat0left",
-                "GAMEPAD_DPAD_RIGHT": "hat0right"
+                "GAMEPAD_DPAD_UP": "h0up",
+                "GAMEPAD_DPAD_DOWN": "h0down",
+                "GAMEPAD_DPAD_LEFT": "h0left",
+                "GAMEPAD_DPAD_RIGHT": "h0right"
             }
         },
         "keyboard": {

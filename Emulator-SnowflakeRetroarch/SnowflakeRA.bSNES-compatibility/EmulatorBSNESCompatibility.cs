@@ -76,7 +76,11 @@ namespace SnowflakeRA.bSNEScompatibility
             {
                 controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 4).First().DeviceIndex.ToString();
             }
+            if (devices.Select(device => device.DI_ProductName).Contains(deviceName))
+            {
+                controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.DI_ProductName == deviceName).First().DeviceIndex.ToString();
 
+            }
             return base.CompileController(playerIndex, platformInfo, controllerDefinition, controllerTemplate, controllerProfile, inputTemplate, controllerMappings);
         }
         public override void ShutdownEmulator()
