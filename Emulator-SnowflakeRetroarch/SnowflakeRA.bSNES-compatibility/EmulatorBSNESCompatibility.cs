@@ -37,6 +37,9 @@ namespace SnowflakeRA.bSNEScompatibility
             
             var configProfile = this.ConfigurationTemplates[retroArchConfigTemplate].ConfigurationStore.GetConfigurationProfile(game);
             configProfile.ConfigurationValues["input_autodetect_enable"] = false; //Force no autodetect
+            if(this.ConfigurationFlagStore.GetValue(game, "fullscreen_toggle", ConfigurationFlagTypes.BOOLEAN_FLAG)){
+                configProfile.ConfigurationValues["video_fullscreen"] = true; //Force no autodetect
+            }
             var retroArchCfg = this.CompileConfiguration(this.ConfigurationTemplates[retroArchConfigTemplate], configProfile);
             var controller1 = this.CompileController(1, this.CoreInstance.LoadedPlatforms[StonePlatforms.NINTENDO_SNES], this.InputTemplates[retroArchInputTemplateTemplate]);
             var controller2 = this.CompileController(2, this.CoreInstance.LoadedPlatforms[StonePlatforms.NINTENDO_SNES], this.InputTemplates[retroArchInputTemplateTemplate]);
