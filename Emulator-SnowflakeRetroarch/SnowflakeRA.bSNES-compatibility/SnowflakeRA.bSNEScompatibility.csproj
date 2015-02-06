@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="EmulatorBSNESCompatibility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RANetworkCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="resource\configurations.json" />

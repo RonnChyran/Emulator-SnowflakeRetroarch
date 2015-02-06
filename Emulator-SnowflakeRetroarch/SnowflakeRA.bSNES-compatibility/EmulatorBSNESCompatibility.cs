@@ -16,6 +16,8 @@ using Snowflake.Service;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Net;
+using System.Net.Sockets;
 using Snowflake.InputManager;
 
 namespace SnowflakeRA.bSNEScompatibility
@@ -111,66 +113,112 @@ namespace SnowflakeRA.bSNEScompatibility
             switch (promptMessage)
             {
                 case "FAST_FORWARD":
+                    this.SendUdp(RANetworkCommands.FAST_FORWARD);
                     break;
                 case "FAST_FORWARD_HOLD":
+                    this.SendUdp(RANetworkCommands.FAST_FORWARD_HOLD);
                     break;
                 case "LOAD_STATE":
+                    this.SendUdp(RANetworkCommands.LOAD_STATE);
                     break;
                 case "SAVE_STATE":
+                    this.SendUdp(RANetworkCommands.SAVE_STATE);
                     break;
                 case "FULLSCREEN_TOGGLE":
+                    this.SendUdp(RANetworkCommands.FULLSCREEN_TOGGLE);
                     break;
                 case "QUIT":
+                    this.SendUdp(RANetworkCommands.QUIT);
                     break;
                 case "STATE_SLOT_PLUS":
+                    this.SendUdp(RANetworkCommands.STATE_SLOT_PLUS);
                     break;
                 case "STATE_SLOT_MINUS":
+                    this.SendUdp(RANetworkCommands.STATE_SLOT_MINUS);
                     break;
                 case "REWIND":
+                    this.SendUdp(RANetworkCommands.REWIND);
                     break;
                 case "MOVIE_RECORD_TOGGLE":
+                    this.SendUdp(RANetworkCommands.MOVIE_RECORD_TOGGLE);
                     break;
                 case "PAUSE_TOGGLE":
+                    this.SendUdp(RANetworkCommands.PAUSE_TOGGLE);
                     break;
                 case "FRAMEADVANCE":
+                    this.SendUdp(RANetworkCommands.FRAMEADVANCE);
                     break;
                 case "RESET":
+                    this.SendUdp(RANetworkCommands.RESET);
                     break;
                 case "SHADER_NEXT":
+                    this.SendUdp(RANetworkCommands.SHADER_NEXT);
                     break;
                 case "SHADER_PREV":
+                    this.SendUdp(RANetworkCommands.SHADER_PREV);
                     break;
                 case "CHEAT_INDEX_PLUS":
+                    this.SendUdp(RANetworkCommands.CHEAT_INDEX_PLUS);
                     break;
                 case "CHEAT_INDEX_MINUS":
+                    this.SendUdp(RANetworkCommands.CHEAT_INDEX_MINUS);
                     break;
                 case "CHEAT_TOGGLE":
+                    this.SendUdp(RANetworkCommands.CHEAT_TOGGLE);
                     break;
                 case "SCREENSHOT":
+                    this.SendUdp(RANetworkCommands.SCREENSHOT);
                     break;
                 case "MUTE":
+                    this.SendUdp(RANetworkCommands.MUTE);
                     break;
                 case "NETPLAY_FLIP":
+                    this.SendUdp(RANetworkCommands.NETPLAY_FLIP);
                     break;
                 case "SLOWMOTION":
+                    this.SendUdp(RANetworkCommands.SLOWMOTION);
                     break;
                 case "VOLUME_UP":
+                    this.SendUdp(RANetworkCommands.VOLUME_UP);
                     break;
                 case "VOLUME_DOWN":
+                    this.SendUdp(RANetworkCommands.VOLUME_DOWN);
                     break;
                 case "OVERLAY_NEXT":
+                    this.SendUdp(RANetworkCommands.OVERLAY_NEXT);
                     break;
                 case "DISK_EJECT_TOGGLE":
+                    this.SendUdp(RANetworkCommands.DISK_EJECT_TOGGLE);
                     break;
                 case "DISK_NEXT":
+                    this.SendUdp(RANetworkCommands.DISK_NEXT);
                     break;
                 case "DISK_PREV":
+                    this.SendUdp(RANetworkCommands.DISK_PREV);
                     break;
                 case "GRAB_MOUSE_TOGGLE":
+                    this.SendUdp(RANetworkCommands.GRAB_MOUSE_TOGGLE);
                     break;
                 case "MENU_TOGGLE":
+                    this.SendUdp(RANetworkCommands.MENU_TOGGLE);
                     break;
             }
         }
+        internal void SendUdp(int port, string ipAddress, byte[] data)
+        {
+            Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            IPAddress serverAddr = IPAddress.Parse(ipAddress);
+            IPEndPoint endPoint = new IPEndPoint(serverAddr, port);
+            sock.SendTo(data, endPoint);
+        }
+        internal void SendUdp(int port, string ipAddress, string data)
+        {
+            this.SendUdp(port, ipAddress, Encoding.ASCII.GetBytes(data));
+        }
+        internal void SendUdp(string data)
+        {
+            this.SendUdp(55355, "127.0.0.1", Encoding.ASCII.GetBytes(data));
+        }
+        
     }
 }
