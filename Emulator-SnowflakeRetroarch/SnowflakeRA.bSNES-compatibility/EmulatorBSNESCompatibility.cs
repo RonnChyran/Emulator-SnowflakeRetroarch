@@ -73,7 +73,7 @@ namespace SnowflakeRA.bSNEScompatibility
                 controllerTemplate.KeyboardControllerMappings : controllerTemplate.GamepadControllerMappings;
             string deviceName = this.CoreInstance.ControllerPortsDatabase.GetDeviceInPort(platformInfo, playerIndex);
             IList<IInputDevice> devices = new InputManager().GetGamepads();
-            if (devices.Count == 0)
+            if (!devices.Count == 0)
             {
                 if (deviceName == InputDeviceNames.XInputDevice1)
                 {
