@@ -37,17 +37,18 @@ namespace SnowflakeRA.bSNEScompatibility
         {
             var emulatorPath =
                 Path.Combine(this.CoreInstance.EmulatorManager.GetAssemblyDirectory(this.EmulatorAssembly), this.EmulatorAssembly.MainAssembly);
-            
+
             var configProfile = this.ConfigurationTemplates[retroArchConfigTemplate].ConfigurationStore.GetConfigurationProfile(game);
             configProfile.ConfigurationValues["input_autodetect_enable"] = false; //Force no autodetect
             bool fullScreen = this.ConfigurationFlagStore.GetValue(game, "fullscreen_toggle", ConfigurationFlagTypes.BOOLEAN_FLAG);
-            if(fullScreen){
+            if (fullScreen)
+            {
                 configProfile.ConfigurationValues["video_fullscreen"] = true; //Force no autodetect
             }
             var retroArchCfg = this.CompileConfiguration(this.ConfigurationTemplates[retroArchConfigTemplate], configProfile);
             var controller1 = this.CompileController(1, this.CoreInstance.LoadedPlatforms[StonePlatforms.NINTENDO_SNES], this.InputTemplates[retroArchInputTemplate]);
             var controller2 = this.CompileController(2, this.CoreInstance.LoadedPlatforms[StonePlatforms.NINTENDO_SNES], this.InputTemplates[retroArchInputTemplate]);
-            
+
 
             File.WriteAllText(Path.Combine(this.PluginDataPath, "retroarch.tmp.cfg"), retroArchCfg);
             File.AppendAllText(Path.Combine(this.PluginDataPath, "retroarch.tmp.cfg"), Environment.NewLine + controller1);
@@ -68,28 +69,46 @@ namespace SnowflakeRA.bSNEScompatibility
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
         /* Win32 End */
-        public override string CompileController(int playerIndex, IPlatformInfo platformInfo, IControllerDefinition controllerDefinition, IControllerTemplate controllerTemplate, IControllerProfile controllerProfile, IInputTemplate inputTemplate){
-             var controllerMappings = controllerProfile.ProfileType == ControllerProfileType.KEYBOARD_PROFILE ?
-                controllerTemplate.KeyboardControllerMappings : controllerTemplate.GamepadControllerMappings;
+        public override string CompileController(int playerIndex, IPlatformInfo platformInfo, IControllerDefinition controllerDefinition, IControllerTemplate controllerTemplate, IControllerProfile controllerProfile, IInputTemplate inputTemplate)
+        {
+            var controllerMappings = controllerProfile.ProfileType == ControllerProfileType.KEYBOARD_PROFILE ?
+               controllerTemplate.KeyboardControllerMappings : controllerTemplate.GamepadControllerMappings;
             string deviceName = this.CoreInstance.ControllerPortsDatabase.GetDeviceInPort(platformInfo, playerIndex);
             IList<IInputDevice> devices = new InputManager().GetGamepads();
-            if (!devices.Count == 0)
-            {
+            if (!devices.Select(device => device.DI_ProductName).Contains(deviceName) || !(devices.Where(device => device.XI_IsXInput).Count() == 0))
+            { //todo fix this
                 if (deviceName == InputDeviceNames.XInputDevice1)
                 {
-                    controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 1).First().DeviceIndex.ToString();
+                    var xinputDevice = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 1).FirstOrDefault();
+                    if (!xinputDevice.Equals(null))
+                    {
+                        controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = xinputDevice.DeviceIndex.ToString();
+                    }
                 }
                 if (deviceName == InputDeviceNames.XInputDevice2)
                 {
-                    controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 2).First().DeviceIndex.ToString();
+                    var xinputDevice = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 1).FirstOrDefault();
+                    if (!xinputDevice.Equals(null))
+                    {
+                        controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = xinputDevice.DeviceIndex.ToString();
+                    }
                 }
                 if (deviceName == InputDeviceNames.XInputDevice3)
                 {
-                    controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 3).First().DeviceIndex.ToString();
+                    var xinputDevice = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 1).FirstOrDefault();
+                    if (!xinputDevice.Equals(null))
+                    {
+                        controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = xinputDevice.DeviceIndex.ToString();
+                    }
                 }
                 if (deviceName == InputDeviceNames.XInputDevice4)
                 {
-                    controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 4).First().DeviceIndex.ToString();
+                    var xinputDevice = devices.Where(device => device.XI_IsXInput).Where(device => device.XI_GamepadIndex == 1).FirstOrDefault();
+                    if (!xinputDevice.Equals(null))
+                    {
+                        controllerMappings["default"].KeyMappings["JOYPAD_INDEX"] = xinputDevice.DeviceIndex.ToString();
+                    }
+
                 }
                 if (devices.Select(device => device.DI_ProductName).Contains(deviceName))
                 {
@@ -219,6 +238,6 @@ namespace SnowflakeRA.bSNEScompatibility
         {
             this.SendUdp(55355, "127.0.0.1", Encoding.ASCII.GetBytes(data));
         }
-        
+
     }
 }
